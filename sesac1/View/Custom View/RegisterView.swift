@@ -54,6 +54,8 @@ class RegisterView: UIView{
             contentsView.addSubview($0)
         }
         
+        self.backgroundColor = .red
+        
         contentsView.clipsToBounds = true
         contentsView.layer.cornerRadius = 4
         

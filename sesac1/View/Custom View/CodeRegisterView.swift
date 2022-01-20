@@ -24,7 +24,6 @@ class CodeRegisterView: UIView{
     let contentsView = UIView()
     let textField = UITextField()
     let lineView = UIView()
-    let additionLabel = UILabel()
     let placeHolderText: String = ""
     let resendButton = UIButton()
     let startButton = UIButton()
@@ -50,7 +49,7 @@ class CodeRegisterView: UIView{
     }
     
     func setupView(placeHolderText: String) {
-        [contentsView, additionLabel, startButton, resendButton].forEach {
+        [contentsView, startButton, resendButton].forEach {
             self.addSubview($0)
         }
         
@@ -63,8 +62,8 @@ class CodeRegisterView: UIView{
         
         contentsView.clipsToBounds = true
         contentsView.layer.cornerRadius = 4
+       
 
-        
         
         textField.backgroundColor = .clear
         textField.font = R.font.notoSansCJKkrRegular(size: 14)
@@ -74,9 +73,6 @@ class CodeRegisterView: UIView{
         textField.isUserInteractionEnabled = true
         textField.becomeFirstResponder()
         textField.tintColor = .blue
-        
-        additionLabel.isHidden = true
-        additionLabel.font = R.font.notoSansCJKkrRegular(size: 12)
         
         startButton.clipsToBounds = true
         startButton.layer.cornerRadius = 8
@@ -105,15 +101,20 @@ class CodeRegisterView: UIView{
     }
     
     func setupConstraints() {
+
+        
         contentsView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.width.equalTo(263)
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(12)
             make.height.equalTo(48)
+            
         }
         
         textField.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(13)
             make.leading.equalToSuperview().offset(12)
-            make.top.bottom.equalToSuperview().inset(13)
+            make.trailing.equalToSuperview().offset(-12)
+            make.bottom.equalToSuperview().offset(-13)
         }
         
         timer.snp.makeConstraints { make in
@@ -123,10 +124,12 @@ class CodeRegisterView: UIView{
             make.height.equalTo(22)
         }
         
+        
         lineView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview()
+            make.top.equalTo(textField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
+            
         }
         
         resendButton.snp.makeConstraints { make in
@@ -138,11 +141,13 @@ class CodeRegisterView: UIView{
         }
         
         startButton.snp.makeConstraints { make in
-            make.top.equalTo(lineView.snp.bottom).offset(72)
+            make.top.equalTo(contentsView.snp.bottom).offset(72)
             make.centerX.equalToSuperview()
             make.height.equalTo(48)
             make.leading.trailing.equalToSuperview().inset(12)
+            make.bottom.equalToSuperview()
         }
+        
         
     }
     
