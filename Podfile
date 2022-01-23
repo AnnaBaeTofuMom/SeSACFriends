@@ -8,6 +8,7 @@ target 'sesac1' do
   # Pods for sesac1
   pod 'R.swift'
   pod 'AnyFormatKit'
+  pod 'Firebase/Auth'
 
   target 'sesac1Tests' do
     inherit! :search_paths
