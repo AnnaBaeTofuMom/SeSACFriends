@@ -24,11 +24,8 @@ class CodeAuthViewController: UIViewController {
         view.backgroundColor = R.color.white()
 
         
-        let gesture = UIGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
-        view.addGestureRecognizer(gesture)
-        
         codeView.phoneNumberTextField.startButton.addTarget(self, action: #selector(verifyCodeNumber), for: .touchUpInside)
-        
+        codeView.phoneNumberTextField.textField.becomeFirstResponder()
         
     
     }
@@ -38,6 +35,7 @@ class CodeAuthViewController: UIViewController {
             if error == nil {
                 print("----ViewModel----this code is verified")
                 self.viewModel.codeAuthorized = true
+                self.navigationController?.pushViewController(NicknameViewController(), animated: true)
             } else {
                 print("----ViewModel----this code is not verified")
             }

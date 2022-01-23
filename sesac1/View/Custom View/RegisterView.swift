@@ -37,7 +37,7 @@ class RegisterView: UIView{
         self.mode = mode
         configure(placeHolderText: placeHolderText)
         makeConstraints()
-        BindUI()
+        
         
     }
     
@@ -61,6 +61,7 @@ class RegisterView: UIView{
         textField.font = R.font.notoSansCJKkrRegular(size: 14)
         textField.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: [NSAttributedString.Key.foregroundColor : R.color.gray7()!])
         textField.keyboardType = .numberPad
+        lineView.backgroundColor = R.color.gray3()
         
         
         button.clipsToBounds = true
@@ -100,52 +101,5 @@ class RegisterView: UIView{
         }
     }
     
-    func BindUI() {
-        textField.rx.text.orEmpty.map(checkIsFocus).subscribe(onNext: { color in
-            self.lineView.backgroundColor = color
-        }).disposed(by: disposeBag)
-        
-        textField.rx.text.orEmpty.map(checkPhoneNumberValid).subscribe(onNext: { b in
-            print("this button is enabled")
-            self.textField.text = self.textField.text?.pretty()
-            print("Pretty now")
-            
-        }).disposed(by: disposeBag)
-        
-    }
-    
-    func checkIsFocus(_ text: String) -> UIColor {
-        if text == "" {
-            return R.color.gray3()!
-        } else {
-            return R.color.focus()!
-        }
-        
-    }
-    
-    func checkPhoneNumberValid(_ phoneNumber: String) -> Bool {
-        let pattern = "^01[0-1, 7]+-[0-9-]{9}$"
-        let regex = try? NSRegularExpression(pattern: pattern)
-        if let _ = regex?.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) {
-            return true
-        }
-        return false
-    }
-    
-    func pretty(text: String) -> String {
-    let _str = text.replacingOccurrences(of: "-", with: "")
-    let arr = Array(_str)
-    if arr.count > 3 {
-
-        
-            if let regex = try? NSRegularExpression(pattern: "([0-9]{3})([0-9]{3,4})([0-9]{4})", options: .caseInsensitive) {
-                let modString = regex.stringByReplacingMatches(in: _str, options: [], range: NSRange(_str.startIndex..., in: _str), withTemplate: "$1-$2-$3")
-                return modString
-                
-            }
-        
-    }
-    return text
-}
 }
 

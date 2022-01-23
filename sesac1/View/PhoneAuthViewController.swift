@@ -10,8 +10,9 @@ import Rswift
 import RxSwift
 import RxCocoa
 import AnyFormatKit
+import Toast_Swift
 
-class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
+class PhoneAuthViewController: UIViewController {
     let navi = UINavigationController()
     let repo = Repository()
     let descriptionLabel = UILabel()
@@ -25,9 +26,6 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
         
         view.backgroundColor = R.color.white()
         
-        let gesture = UIGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
-        view.addGestureRecognizer(gesture)
-        
         registerView.button.addTarget(self, action: #selector(phoneAuthButtonClicked), for: .touchUpInside)
         
         BindUI()
@@ -35,7 +33,6 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
         makeConstraints()
 
     }
-    
     
     
     func BindUI() {
@@ -47,17 +44,31 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
             print(error)
         }.disposed(by: disposeBag)
         
+        registerView.textField.rx.text.orEmpty.map(checkIsFocus).subscribe(onNext: { color in
+            self.registerView.lineView.backgroundColor = color
+        }).disposed(by: disposeBag)
+        
+        registerView.textField.rx.text.orEmpty.map(checkPhoneNumberValid).subscribe(onNext: { b in
+            self.registerView.button.isEnabled = b
+            print("this button is enabled")
+            self.registerView.textField.text = self.registerView.textField.text?.pretty()
+            print("Pretty now")
+            
+        }).disposed(by: disposeBag)
 
     }
     
     func configure() {
         view.addSubview(descriptionLabel)
         view.addSubview(registerView)
+        
         descriptionLabel.text = "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해 주세요"
         descriptionLabel.numberOfLines = 2
         descriptionLabel.font = R.font.notoSansCJKkrRegular(size: 20)
         descriptionLabel.textAlignment = .center
         descriptionLabel.attributedText = lineSpacing(text: descriptionLabel.text!, spacing: 1.08, fontSize: 20)
+        registerView.textField.becomeFirstResponder()
+        registerView.button.isEnabled = false
     }
 
     func makeConstraints() {
@@ -84,14 +95,51 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
         viewModel.modifyNumber { error, statusCode in
             if error == .failed {
                 print("phone number verification failed")
+                self.view.makeToast("전화번호 인증에 실패했습니다.")
+                
             } else {
                 print("phone number verification success")
+                self.navigationController?.pushViewController(CodeAuthViewController(), animated: true)
                 
             }
         }
     }
     
+
     
+    func checkIsFocus(_ text: String) -> UIColor {
+        if text == "" {
+            return R.color.gray3()!
+        } else {
+            return R.color.focus()!
+        }
+        
+    }
+    
+    func checkPhoneNumberValid(_ phoneNumber: String) -> Bool {
+        let pattern = "^01[0-1, 7]+-[0-9-]{9}$"
+        let regex = try? NSRegularExpression(pattern: pattern)
+        if let _ = regex?.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) {
+            return true
+        }
+        return false
+    }
+    
+    func pretty(text: String) -> String {
+    let _str = text.replacingOccurrences(of: "-", with: "")
+    let arr = Array(_str)
+    if arr.count > 3 {
+
+        
+            if let regex = try? NSRegularExpression(pattern: "([0-9]{3})([0-9]{3,4})([0-9]{4})", options: .caseInsensitive) {
+                let modString = regex.stringByReplacingMatches(in: _str, options: [], range: NSRange(_str.startIndex..., in: _str), withTemplate: "$1-$2-$3")
+                return modString
+                
+            }
+        
+    }
+    return text
+}
     
 
 }

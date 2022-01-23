@@ -40,7 +40,6 @@ class CodeRegisterView: UIView{
         self.mode = mode
         setupView(placeHolderText: placeHolderText)
         setupConstraints()
-        BindUI()
         
     }
     
@@ -151,36 +150,7 @@ class CodeRegisterView: UIView{
         
     }
     
-    func BindUI() {
-        textField.rx.text.orEmpty.map(checkIsFocus).subscribe(onNext: { color in
-            self.lineView.backgroundColor = color
-        }).disposed(by: disposeBag)
-        
-        textField.rx.text.orEmpty.map(codeNumberValid).subscribe(onNext: { b in
-            self.startButton.isEnabled = b
-        }).disposed(by: disposeBag)
-        
-    }
-    
-    func checkIsFocus(_ text: String) -> UIColor {
-        if text == "" {
-            return R.color.gray3()!
-        } else {
-            return R.color.focus()!
-        }
-        
-    }
-    
-    func codeNumberValid(_ phoneNumber: String) -> Bool {
-        let pattern = "[0-9]{6}$"
-        let regex = try? NSRegularExpression(pattern: pattern)
-        if let _ = regex?.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) {
-            return true
-        }
-        
-        return false
-    
-    }
+
     
    
 }

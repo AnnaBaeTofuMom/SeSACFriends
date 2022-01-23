@@ -13,6 +13,7 @@ class CodeAuthView: UIView {
     let descriptionLabel = UILabel()
     let timeInfoLabel = UILabel()
     let phoneNumberTextField = CodeRegisterView(frame: CGRect(), mode: .disabled, placeHolderText: "인증번호 입력")
+    let disposeBag = DisposeBag()
     
 
     
@@ -20,6 +21,7 @@ class CodeAuthView: UIView {
         super.init(frame: frame)
         configure()
         makeConstraints()
+        BindUI()
         
     }
     
@@ -62,6 +64,37 @@ class CodeAuthView: UIView {
         
         
         
+    }
+    
+    func BindUI() {
+        phoneNumberTextField.textField.rx.text.orEmpty.map(checkIsFocus).subscribe(onNext: { color in
+            self.phoneNumberTextField.lineView.backgroundColor = color
+        }).disposed(by: disposeBag)
+        
+        phoneNumberTextField.textField.rx.text.orEmpty.map(codeNumberValid).subscribe(onNext: { b in
+            self.phoneNumberTextField.startButton.isEnabled = b
+        }).disposed(by: disposeBag)
+        
+    }
+    
+    func checkIsFocus(_ text: String) -> UIColor {
+        if text == "" {
+            return R.color.gray3()!
+        } else {
+            return R.color.focus()!
+        }
+        
+    }
+    
+    func codeNumberValid(_ phoneNumber: String) -> Bool {
+        let pattern = "[0-9]{6}$"
+        let regex = try? NSRegularExpression(pattern: pattern)
+        if let _ = regex?.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) {
+            return true
+        }
+        
+        return false
+    
     }
     
     

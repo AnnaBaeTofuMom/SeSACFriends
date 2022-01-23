@@ -48,11 +48,13 @@ PODS:
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - AnyFormatKit
   - Firebase/Auth
   - R.swift
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -68,6 +70,7 @@ SPEC REPOS:
     - PromisesObjC
     - R.swift
     - R.swift.Library
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   AnyFormatKit: 4ef60ad3f48c69962d482bb2de0a6d3214e8527b
@@ -82,7 +85,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: ebd9d1ec21023c606763e4c6de218fd0de03d2a6
+PODFILE CHECKSUM: bcfa8a65d31a0f1582c8f148b8671f83a6340252
 
 COCOAPODS: 1.11.2
