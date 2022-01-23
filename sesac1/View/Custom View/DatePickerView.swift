@@ -85,13 +85,13 @@ class DatePickerView: UIView {
         lineView3.backgroundColor = R.color.gray3()
         
         yearTextField.font = R.font.notoSansCJKkrRegular(size: 14)
-        yearTextField.textColor = R.color.gray7()
+        yearTextField.textColor = R.color.black()
         yearTextField.placeholder = "1990"
         monthTextField.font = R.font.notoSansCJKkrRegular(size: 14)
-        monthTextField.textColor = R.color.gray7()
+        monthTextField.textColor = R.color.black()
         monthTextField.placeholder = "1"
         dayTextField.font = R.font.notoSansCJKkrRegular(size: 14)
-        dayTextField.textColor = R.color.gray7()
+        dayTextField.textColor = R.color.black()
         dayTextField.placeholder = "1"
         
         button.clipsToBounds = true
@@ -216,10 +216,6 @@ class DatePickerView: UIView {
         
     }
     
-    func BindUI() {
-        
-      
-    }
     
     @objc
        private func handleDatePicker(_ sender: UIDatePicker) {

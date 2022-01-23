@@ -12,6 +12,9 @@
 		3A2D0E14279D6E4D002EFF0D /* DoBPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E13279D6E4D002EFF0D /* DoBPickerViewController.swift */; };
 		3A2D0E16279D8698002EFF0D /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E15279D8698002EFF0D /* DatePickerView.swift */; };
 		3A2D0E18279D95C9002EFF0D /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E17279D95C9002EFF0D /* EmailViewController.swift */; };
+		3A2D0E1A279DA3B7002EFF0D /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E19279DA3B7002EFF0D /* GenderViewController.swift */; };
+		3A2D0E1C279DA486002EFF0D /* GenderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E1B279DA486002EFF0D /* GenderPickerView.swift */; };
+		3A2D0E1E279DAE5B002EFF0D /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E1D279DAE5B002EFF0D /* MainMapViewController.swift */; };
 		3A32EF7D279C4AEA00993FE3 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF7C279C4AEA00993FE3 /* AuthModel.swift */; };
 		3A32EF7F279C5F3900993FE3 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF7E279C5F3900993FE3 /* Entity.swift */; };
 		3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF80279C5F9100993FE3 /* Repository.swift */; };
@@ -69,6 +72,9 @@
 		3A2D0E13279D6E4D002EFF0D /* DoBPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoBPickerViewController.swift; sourceTree = "<group>"; };
 		3A2D0E15279D8698002EFF0D /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		3A2D0E17279D95C9002EFF0D /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		3A2D0E19279DA3B7002EFF0D /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		3A2D0E1B279DA486002EFF0D /* GenderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerView.swift; sourceTree = "<group>"; };
+		3A2D0E1D279DAE5B002EFF0D /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		3A32EF7C279C4AEA00993FE3 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		3A32EF7E279C5F3900993FE3 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = sesac1/Entity/Entity.swift; sourceTree = SOURCE_ROOT; };
 		3A32EF80279C5F9100993FE3 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 			children = (
 				3A428A5727981F2C00BE0F7C /* Extension + View.swift */,
 				3A32EF82279D3B6900993FE3 /* NicknameViewController.swift */,
+				3A2D0E19279DA3B7002EFF0D /* GenderViewController.swift */,
+				3A2D0E1D279DAE5B002EFF0D /* MainMapViewController.swift */,
 				3A2D0E13279D6E4D002EFF0D /* DoBPickerViewController.swift */,
 				3A2D0E17279D95C9002EFF0D /* EmailViewController.swift */,
 				3AA75A662796AEA9007293B5 /* PhoneAuthViewController.swift */,
@@ -158,6 +166,7 @@
 				3A428A662798476400BE0F7C /* RegisterView.swift */,
 				3A428A7927989D6E00BE0F7C /* CodeRegisterView.swift */,
 				3A2D0E15279D8698002EFF0D /* DatePickerView.swift */,
+				3A2D0E1B279DA486002EFF0D /* GenderPickerView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -562,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA75A692796AEBB007293B5 /* CodeAuthViewController.swift in Sources */,
+				3A2D0E1A279DA3B7002EFF0D /* GenderViewController.swift in Sources */,
 				3A32EF83279D3B6900993FE3 /* NicknameViewController.swift in Sources */,
 				3A428A5827981F2C00BE0F7C /* Extension + View.swift in Sources */,
 				3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */,
@@ -570,10 +580,12 @@
 				3A428A672798476400BE0F7C /* RegisterView.swift in Sources */,
 				3A2D0E14279D6E4D002EFF0D /* DoBPickerViewController.swift in Sources */,
 				3A32EF7D279C4AEA00993FE3 /* AuthModel.swift in Sources */,
+				3A2D0E1E279DAE5B002EFF0D /* MainMapViewController.swift in Sources */,
 				3AA75A332796ABF6007293B5 /* AppDelegate.swift in Sources */,
 				3A428A7A27989D6E00BE0F7C /* CodeRegisterView.swift in Sources */,
 				3A428A7627989C1F00BE0F7C /* CodeAuthView.swift in Sources */,
 				3A2D0E16279D8698002EFF0D /* DatePickerView.swift in Sources */,
+				3A2D0E1C279DA486002EFF0D /* GenderPickerView.swift in Sources */,
 				3A2D0E18279D95C9002EFF0D /* EmailViewController.swift in Sources */,
 				3AA75A352796ABF6007293B5 /* SceneDelegate.swift in Sources */,
 				3AA75A672796AEA9007293B5 /* PhoneAuthViewController.swift in Sources */,

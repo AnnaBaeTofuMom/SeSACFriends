@@ -38,7 +38,7 @@ class NicknameViewController: UIViewController {
             print(text)
         }.disposed(by: disposeBag)
         
-        registerView.textField.rx.text.orEmpty.map(viewModel.verifyNickname).subscribe { b in
+        registerView.textField.rx.text.orEmpty.map(viewModel.isContentExist).subscribe { b in
             self.registerView.button.isEnabled = b
         }.disposed(by: disposeBag)
         
