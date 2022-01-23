@@ -35,8 +35,8 @@ class RegisterView: UIView{
     init(frame: CGRect, mode: TextFieldMode) {
         super.init(frame: frame)
         self.mode = mode
-        setupView(placeHolderText: placeHolderText)
-        setupConstraints()
+        configure(placeHolderText: placeHolderText)
+        makeConstraints()
         BindUI()
         
     }
@@ -46,7 +46,7 @@ class RegisterView: UIView{
     }
 
     
-    func setupView(placeHolderText: String) {
+    func configure(placeHolderText: String) {
         [contentsView, additionLabel, button].forEach {
             self.addSubview($0)
         }
@@ -71,7 +71,7 @@ class RegisterView: UIView{
         button.setBackgroundColor(R.color.green()!, for: .normal)
     }
     
-    func setupConstraints() {
+    func makeConstraints() {
         contentsView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(48)
@@ -106,7 +106,6 @@ class RegisterView: UIView{
         }).disposed(by: disposeBag)
         
         textField.rx.text.orEmpty.map(checkPhoneNumberValid).subscribe(onNext: { b in
-            self.button.isEnabled = b
             print("this button is enabled")
             self.textField.text = self.textField.text?.pretty()
             print("Pretty now")

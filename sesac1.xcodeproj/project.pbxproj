@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		347028E9355F95DCAFEA37CA /* Pods_sesac1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC9C0382B5F39F33894103 /* Pods_sesac1.framework */; };
+		3A2D0E12279D59E5002EFF0D /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */; };
 		3A32EF7D279C4AEA00993FE3 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF7C279C4AEA00993FE3 /* AuthModel.swift */; };
 		3A32EF7F279C5F3900993FE3 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF7E279C5F3900993FE3 /* Entity.swift */; };
 		3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32EF80279C5F9100993FE3 /* Repository.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		160EB38E785AB56B1001C141 /* Pods-sesac1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sesac1.release.xcconfig"; path = "Target Support Files/Pods-sesac1/Pods-sesac1.release.xcconfig"; sourceTree = "<group>"; };
+		3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3A32EF7C279C4AEA00993FE3 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		3A32EF7E279C5F3900993FE3 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = sesac1/Entity/Entity.swift; sourceTree = SOURCE_ROOT; };
 		3A32EF80279C5F9100993FE3 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				3A428A6E2798750100BE0F7C /* PhoneAuthViewModel.swift */,
+				3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				3A32EF83279D3B6900993FE3 /* NicknameViewController.swift in Sources */,
 				3A428A5827981F2C00BE0F7C /* Extension + View.swift in Sources */,
 				3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */,
+				3A2D0E12279D59E5002EFF0D /* SignInViewModel.swift in Sources */,
 				3A32EF7F279C5F3900993FE3 /* Entity.swift in Sources */,
 				3A428A672798476400BE0F7C /* RegisterView.swift in Sources */,
 				3A32EF7D279C4AEA00993FE3 /* AuthModel.swift in Sources */,

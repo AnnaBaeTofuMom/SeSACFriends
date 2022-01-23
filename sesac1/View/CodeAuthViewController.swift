@@ -27,14 +27,14 @@ class CodeAuthViewController: UIViewController {
         let gesture = UIGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
         view.addGestureRecognizer(gesture)
         
-        codeView.phoneNumberTextField.startButton.addTarget(self, action: #selector(viewModel.verifyCodeNumber), for: .touchUpInside)
+        codeView.phoneNumberTextField.startButton.addTarget(self, action: #selector(verifyCodeNumber), for: .touchUpInside)
         
         
     
     }
     
     @objc func verifyCodeNumber() {
-        repo.verifyCodeNumber(code: codeView.phoneNumberTextField.textField.text) { error, statusCode in
+        repo.requestCodeAuth(code: codeView.phoneNumberTextField.textField.text) { error, statusCode in
             if error == nil {
                 print("----ViewModel----this code is verified")
                 self.viewModel.codeAuthorized = true

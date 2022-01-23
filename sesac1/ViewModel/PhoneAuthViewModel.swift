@@ -24,7 +24,7 @@ class PhoneAuthViewModel {
         let actualPhoneNumber = "+82\(phoneNumber.components(separatedBy: ["-"]).joined())"
         
         print("this is actual phone number \(actualPhoneNumber)")
-        repo.verifyPhoneNumberOnRepo(phoneNumber: actualPhoneNumber) { error, StatusCode in
+        repo.requestPhoneAuth(phoneNumber: actualPhoneNumber) { error, StatusCode in
             if error == nil {
                 completion(.success, .success)
                 
@@ -36,7 +36,7 @@ class PhoneAuthViewModel {
     }
     
     @objc func verifyCodeNumber() {
-        repo.verifyCodeNumber(code: codeNumber) { error, statusCode in
+        repo.requestCodeAuth(code: codeNumber) { error, statusCode in
             if error == nil {
                 print("----ViewModel----this code is verified")
                 self.codeAuthorized = true

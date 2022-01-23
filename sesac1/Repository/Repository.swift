@@ -12,7 +12,7 @@ import Foundation
 class Repository {
     
     
-    func verifyPhoneNumberOnRepo(phoneNumber: String, completion: @ escaping (APIError?, StatusCode?) -> Void) {
+    func requestPhoneAuth(phoneNumber: String, completion: @ escaping (APIError?, StatusCode?) -> Void) {
         print("repo verify phone number")
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
@@ -33,7 +33,7 @@ class Repository {
         
     }
 
-    func verifyCodeNumber(code: String?, completion: @escaping (APIError?, StatusCode?) -> Void ){
+    func requestCodeAuth(code: String?, completion: @escaping (APIError?, StatusCode?) -> Void ){
         print(#function)
         guard let verificationCode = code else { return }
         let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")!

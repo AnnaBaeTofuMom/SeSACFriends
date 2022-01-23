@@ -12,6 +12,7 @@ import RxCocoa
 import AnyFormatKit
 
 class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
+    let navi = UINavigationController()
     let repo = Repository()
     let descriptionLabel = UILabel()
     let registerView = RegisterView(frame: CGRect(), mode: .disabled)
@@ -27,7 +28,7 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
         let gesture = UIGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
         view.addGestureRecognizer(gesture)
         
-        registerView.button.addTarget(self, action: #selector(verifyNumber), for: .touchUpInside)
+        registerView.button.addTarget(self, action: #selector(phoneAuthButtonClicked), for: .touchUpInside)
         
         BindUI()
         configure()
@@ -78,13 +79,14 @@ class PhoneAuthViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @objc func verifyNumber() {
+    @objc func phoneAuthButtonClicked() {
         
         viewModel.modifyNumber { error, statusCode in
             if error == .failed {
                 print("phone number verification failed")
             } else {
                 print("phone number verification success")
+                
             }
         }
     }
