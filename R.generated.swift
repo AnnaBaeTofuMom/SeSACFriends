@@ -471,10 +471,16 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `man`.
     static let man = Rswift.ImageResource(bundle: R.hostingBundle, name: "man")
+    /// Image `onboarding1`.
+    static let onboarding1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboarding1")
+    /// Image `onboarding2`.
+    static let onboarding2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboarding2")
+    /// Image `onboarding3`.
+    static let onboarding3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboarding3")
     /// Image `woman`.
     static let woman = Rswift.ImageResource(bundle: R.hostingBundle, name: "woman")
 
@@ -482,6 +488,27 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "man", bundle: ..., traitCollection: ...)`
     static func man(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.man, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboarding1", bundle: ..., traitCollection: ...)`
+    static func onboarding1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboarding1, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboarding2", bundle: ..., traitCollection: ...)`
+    static func onboarding2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboarding2, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboarding3", bundle: ..., traitCollection: ...)`
+    static func onboarding3(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboarding3, compatibleWith: traitCollection)
     }
     #endif
 
