@@ -31,11 +31,16 @@ class CodeAuthViewController: UIViewController {
     }
     
     @objc func verifyCodeNumber() {
+        
+        
+        
         repo.requestCodeAuth(code: codeView.phoneNumberTextField.textField.text) { error, statusCode in
+
             if error == nil {
                 print("----ViewModel----this code is verified")
-                self.viewModel.codeAuthorized = true
-                self.navigationController?.pushViewController(NicknameViewController(), animated: true)
+                let nvc = NicknameViewController()
+                nvc.viewModel.phoneNumber = self.viewModel.phoneNumber
+                self.navigationController?.pushViewController(nvc, animated: true)
             } else {
                 print("----ViewModel----this code is not verified")
             }

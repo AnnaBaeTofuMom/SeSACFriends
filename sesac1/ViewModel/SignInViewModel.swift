@@ -11,11 +11,14 @@ import UIKit
 import Rswift
 
 class signInViewModel {
+    
+    let repo = Repository()
+    var phoneNumber: String = ""
     var nickname: String = "Unknown User \(Int.random(in: 1...100))"
     var dateOfBirth: Date = Date()
     var email: String = "Unknown@email.com"
     var gender: Int = 0
-    var genderSelected: Bool = false
+    var fcmToken: String? = UserDefaults.standard.string(forKey: "fcmToken")
     
     
     func isContentExist(text: String) -> Bool {
@@ -47,5 +50,18 @@ class signInViewModel {
         return false
     }
     
+    func signInButtonClicked(completion: @escaping (Int?, APIError?) -> Void ) {
+        repo.postSignUp(phoneNumber: self.phoneNumber, nickname: self.nickname, birth: self.dateOfBirth, email: self.email, gender: self.gender) { code, error in
+            guard let error = error else {
+                print("this is status Code: \(code)")
+                completion(code, nil)
+                return
+            }
+            completion(code, .failed)
+            
+            
+        }
+        
+    }
   
 }

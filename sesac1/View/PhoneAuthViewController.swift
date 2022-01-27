@@ -99,7 +99,9 @@ class PhoneAuthViewController: UIViewController {
                 
             } else {
                 print("phone number verification success")
-                self.navigationController?.pushViewController(CodeAuthViewController(), animated: true)
+                let cav = CodeAuthViewController()
+                cav.viewModel.phoneNumber = self.registerView.textField.text!
+                self.navigationController?.pushViewController(cav, animated: true)
                 
             }
         }

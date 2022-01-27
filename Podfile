@@ -10,6 +10,9 @@ target 'sesac1' do
   pod 'AnyFormatKit'
   pod 'Firebase/Auth'
   pod 'Toast-Swift', '~> 5.0.1'
+  pod 'Firebase/Messaging'
+  pod 'Alamofire', '~> 5.5'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'sesac1Tests' do
     inherit! :search_paths

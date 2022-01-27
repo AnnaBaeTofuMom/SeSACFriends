@@ -7,9 +7,15 @@
 import FirebaseAuth
 import RxSwift
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 
 class Repository {
+    
+    let baseURL = "http://test.monocoding.com:35484"
+    
+    let urlUser = "/user"
     
     
     func requestPhoneAuth(phoneNumber: String, completion: @ escaping (APIError?, StatusCode?) -> Void) {
@@ -53,6 +59,44 @@ class Repository {
                 completion(.failed, nil)
             }
         }
+        
+    }
+    
+    func postSignUp(phoneNumber: String, nickname: String, birth: Date, email: String, gender: Int, completion: @escaping (Int?, APIError?) -> Void ) {
+        
+        let params = [
+            "phoneNumber": phoneNumber,
+            "FCMtoken": "\(UserDefaults.standard.string(forKey: "fcmToken") ?? "none")",
+            "nick": nickname,
+            "birth": birth,
+            "email": email,
+            "gender": gender
+        ] as Parameters
+        
+        let headers = [
+            "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ] as HTTPHeaders
+        
+        AF.request(baseURL + urlUser, method: .post, parameters: params, headers: headers).validate().responseString { response in
+            print("SignUp Response")
+            print(response.response!)
+            print("this is status code")
+            print(response.response?.statusCode as Any)
+            completion(response.response?.statusCode, nil)
+
+        }
+        
+    }
+    
+    func getSignIn(idToken: String) {
+        
+        let headers = [
+            "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ] as HTTPHeaders
+        
+        AF.request(baseURL + urlUser, method: .get, headers: headers).validate().response
         
     }
 

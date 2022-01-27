@@ -16,6 +16,7 @@ class OnboardingViewController: UIPageViewController {
     let initialPage = 0
     let button = UIButton()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +83,6 @@ extension OnboardingViewController {
         
         pageControl.snp.makeConstraints { make in
             make.bottom.equalTo(button.snp.top).offset(-42)
-            make.width.equalTo(20)
             make.leading.trailing.equalToSuperview()
         }
         
