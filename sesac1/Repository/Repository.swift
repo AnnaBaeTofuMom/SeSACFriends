@@ -89,16 +89,45 @@ class Repository {
         
     }
     
-    func getSignIn(idToken: String) {
+    func getSignIn(completion: @escaping (Int?, APIError?) -> Void) {
         
         let headers = [
             "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
             "Content-Type": "application/x-www-form-urlencoded"
         ] as HTTPHeaders
         
-        AF.request(baseURL + urlUser, method: .get, headers: headers).validate().response
+        AF.request(baseURL + urlUser, method: .get, headers: headers).validate().response { response in
+            if response.response?.statusCode == 200 {
+                completion(200, nil)
+                print("로그인 성공")
+            }
+            
+            if response.response?.statusCode == 201 {
+                completion(201, nil)
+                print("미가입유저")
+            }
+            
+            if response.response?.statusCode == 401 {
+                completion(401, nil)
+                print("firebase Token Error")
+                
+            }
+            
+            if response.response?.statusCode == 500 {
+                completion(500, nil)
+                print("server Error")
+            }
+            
+            if response.response?.statusCode == 501 {
+                completion(501, nil)
+                print("header, body 확인 요")
+            }
+            
+        }
         
     }
-
+    
 }
+
+
 

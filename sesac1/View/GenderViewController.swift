@@ -61,21 +61,29 @@ class GenderViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func nextButtonClicked() {
         
-        self.viewModel.signInButtonClicked { statuscode, error in
+        self.viewModel.SignUpButtonClicked { statuscode, error in
             switch statuscode {
             case 200:
                 self.view.makeToast("회원가입에 성공하셨습니다.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    let vc = MainMapViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    let vc = TabBarViewController()
+                    let nav = UINavigationController(rootViewController: vc)
+                  
+                    self.navigationController?.pushViewController(nav, animated: true)
                 }
                 
             case 201:
                 self.view.makeToast("이미 가입한 유저입니다.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    let vc = PhoneAuthViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.viewModel.SignIn { statuscode, error in
+                        if statuscode == 200 {
+                            self.view.window?.rootViewController = TabBarViewController()
+                        } else {
+                            self.view.makeToast("로그인에 실패했습니다...")
+                        }
+                    }
                 }
+                
                 
             case 202:
                 self.view.makeToast("닉네임을 사용할 수 없습니다")

@@ -50,10 +50,10 @@ class signInViewModel {
         return false
     }
     
-    func signInButtonClicked(completion: @escaping (Int?, APIError?) -> Void ) {
+    func SignUpButtonClicked(completion: @escaping (Int?, APIError?) -> Void ) {
         repo.postSignUp(phoneNumber: self.phoneNumber, nickname: self.nickname, birth: self.dateOfBirth, email: self.email, gender: self.gender) { code, error in
             guard let error = error else {
-                print("this is status Code: \(code)")
+                print("this is status Code: \(code ?? 000)")
                 completion(code, nil)
                 return
             }
@@ -61,6 +61,42 @@ class signInViewModel {
             
             
         }
+        
+    }
+    
+    func SignIn(completion: @escaping (Int?, APIError?) -> Void ) {
+        
+        repo.getSignIn { statusCode, error in
+            guard let error = error else {
+                if statusCode == 200 {
+                    completion(200, nil)
+                }
+                if statusCode == 201 {
+                    completion(201, nil)
+                    print("미가입유저")
+                }
+                
+                if statusCode == 401 {
+                    completion(401, nil)
+                    print("firebase Token Error")
+                    
+                }
+                
+                if statusCode == 500 {
+                    completion(500, nil)
+                    print("server Error")
+                }
+                
+                if statusCode == 501 {
+                    completion(501, nil)
+                    print("header, body 확인 요")
+                }
+                return
+            }
+
+        }
+        
+        
         
     }
   

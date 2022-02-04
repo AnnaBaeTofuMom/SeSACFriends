@@ -17,8 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "arrow")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "arrow")
+        UINavigationBar.appearance().tintColor = R.color.black()
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for:UIBarMetrics.default)
+        
+//        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        
+        
         FirebaseApp.configure()
         
         if #available(iOS 10.0, *) {

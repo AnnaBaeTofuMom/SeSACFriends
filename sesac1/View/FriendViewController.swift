@@ -1,24 +1,24 @@
 //
-//  MainMapViewController.swift
+//  FriendViewController.swift
 //  sesac1
 //
-//  Created by 경원이 on 2022/01/24.
+//  Created by 경원이 on 2022/02/03.
 //
 
 import UIKit
 
-class MainMapViewController: UIViewController {
+class FriendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .blue
-        self.tabBarController?.editButtonItem.tintColor = R.color.whitegreen()
+        view.backgroundColor = .brown
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+       
+        self.navigationController?.navigationBar.topItem?.title = "새싹친구"
     }
     
 
