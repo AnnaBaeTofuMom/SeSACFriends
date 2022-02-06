@@ -13,6 +13,7 @@ target 'sesac1' do
   pod 'Firebase/Messaging'
   pod 'Alamofire', '~> 5.5'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'RangeSeekSlider'
 
   target 'sesac1Tests' do
     inherit! :search_paths

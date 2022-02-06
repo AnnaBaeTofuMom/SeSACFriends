@@ -14,6 +14,8 @@ class MyPageViewModel {
     let iconTitleArray = ["notice", "faq", "qna", "setting_alarm", "permit"]
     
     
-    
+    @objc func saveButtonClicked() {
+        print(#function)
+    }
     
 }

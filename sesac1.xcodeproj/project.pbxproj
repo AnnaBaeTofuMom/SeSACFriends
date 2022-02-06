@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		347028E9355F95DCAFEA37CA /* Pods_sesac1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC9C0382B5F39F33894103 /* Pods_sesac1.framework */; };
+		3A0D1EA527ADB63A00AF3818 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EA427ADB63A00AF3818 /* ProfileImageCell.swift */; };
+		3A0D1EA727ADB67000AF3818 /* NameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EA627ADB67000AF3818 /* NameCardCell.swift */; };
+		3A0D1EAB27B0000700AF3818 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EAA27B0000700AF3818 /* TitleCollectionViewCell.swift */; };
+		3A0D1EAD27B0047C00AF3818 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EAC27B0047C00AF3818 /* MyProfileViewModel.swift */; };
+		3A0D1EAF27B0197000AF3818 /* ProfileDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EAE27B0197000AF3818 /* ProfileDetailTableViewCell.swift */; };
 		3A2D0E12279D59E5002EFF0D /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */; };
 		3A2D0E14279D6E4D002EFF0D /* DoBPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E13279D6E4D002EFF0D /* DoBPickerViewController.swift */; };
 		3A2D0E16279D8698002EFF0D /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D0E15279D8698002EFF0D /* DatePickerView.swift */; };
@@ -78,6 +83,11 @@
 
 /* Begin PBXFileReference section */
 		160EB38E785AB56B1001C141 /* Pods-sesac1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sesac1.release.xcconfig"; path = "Target Support Files/Pods-sesac1/Pods-sesac1.release.xcconfig"; sourceTree = "<group>"; };
+		3A0D1EA427ADB63A00AF3818 /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		3A0D1EA627ADB67000AF3818 /* NameCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardCell.swift; sourceTree = "<group>"; };
+		3A0D1EAA27B0000700AF3818 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A0D1EAC27B0047C00AF3818 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		3A0D1EAE27B0197000AF3818 /* ProfileDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3A2D0E13279D6E4D002EFF0D /* DoBPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoBPickerViewController.swift; sourceTree = "<group>"; };
 		3A2D0E15279D8698002EFF0D /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -163,6 +173,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A0D1EA327ADB61100AF3818 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3AAB4EDF27AD2D12003456D5 /* MyPageDetailCell.swift */,
+				3AAB4EE127AD3AE0003456D5 /* MyPageCell.swift */,
+				3A0D1EA427ADB63A00AF3818 /* ProfileImageCell.swift */,
+				3A0D1EA627ADB67000AF3818 /* NameCardCell.swift */,
+				3A0D1EAA27B0000700AF3818 /* TitleCollectionViewCell.swift */,
+				3A0D1EAE27B0197000AF3818 /* ProfileDetailTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		3A428A5927983B8D00BE0F7C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,13 +211,12 @@
 		3A428A5A27983BB500BE0F7C /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
+				3A0D1EA327ADB61100AF3818 /* TableViewCell */,
 				3A428A7527989C1F00BE0F7C /* CodeAuthView.swift */,
 				3A428A662798476400BE0F7C /* RegisterView.swift */,
 				3A428A7927989D6E00BE0F7C /* CodeRegisterView.swift */,
 				3A2D0E15279D8698002EFF0D /* DatePickerView.swift */,
 				3A2D0E1B279DA486002EFF0D /* GenderPickerView.swift */,
-				3AAB4EDF27AD2D12003456D5 /* MyPageDetailCell.swift */,
-				3AAB4EE127AD3AE0003456D5 /* MyPageCell.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -215,6 +237,7 @@
 				3A428A6E2798750100BE0F7C /* PhoneAuthViewModel.swift */,
 				3A2D0E11279D59E5002EFF0D /* SignInViewModel.swift */,
 				3AAB4EE327AD3EC0003456D5 /* MyPageViewModel.swift */,
+				3A0D1EAC27B0047C00AF3818 /* MyProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -607,18 +630,23 @@
 				3A428A5827981F2C00BE0F7C /* Extension + View.swift in Sources */,
 				3AAB4EDA27ABB359003456D5 /* ShopViewController.swift in Sources */,
 				3AC44A8D279DD8A600F49065 /* OnboardingSlide.swift in Sources */,
+				3A0D1EAB27B0000700AF3818 /* TitleCollectionViewCell.swift in Sources */,
 				3AC44A8B279DD5B800F49065 /* OnboardingViewController.swift in Sources */,
 				3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */,
 				3AAB4EE227AD3AE0003456D5 /* MyPageCell.swift in Sources */,
+				3A0D1EAF27B0197000AF3818 /* ProfileDetailTableViewCell.swift in Sources */,
 				3A2D0E12279D59E5002EFF0D /* SignInViewModel.swift in Sources */,
+				3A0D1EA727ADB67000AF3818 /* NameCardCell.swift in Sources */,
 				3A32EF7F279C5F3900993FE3 /* Entity.swift in Sources */,
 				3A428A672798476400BE0F7C /* RegisterView.swift in Sources */,
 				3A2D0E14279D6E4D002EFF0D /* DoBPickerViewController.swift in Sources */,
+				3A0D1EA527ADB63A00AF3818 /* ProfileImageCell.swift in Sources */,
 				3AAB4EE627AD40C3003456D5 /* MyProfileViewController.swift in Sources */,
 				3A32EF7D279C4AEA00993FE3 /* AuthModel.swift in Sources */,
 				3A2D0E1E279DAE5B002EFF0D /* MainMapViewController.swift in Sources */,
 				3AAB4ED827ABB2E4003456D5 /* TabBarViewController.swift in Sources */,
 				3AA75A332796ABF6007293B5 /* AppDelegate.swift in Sources */,
+				3A0D1EAD27B0047C00AF3818 /* MyProfileViewModel.swift in Sources */,
 				3A428A7A27989D6E00BE0F7C /* CodeRegisterView.swift in Sources */,
 				3A428A7627989C1F00BE0F7C /* CodeAuthView.swift in Sources */,
 				3A2D0E16279D8698002EFF0D /* DatePickerView.swift in Sources */,
