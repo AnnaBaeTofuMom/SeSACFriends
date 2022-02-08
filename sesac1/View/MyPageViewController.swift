@@ -15,6 +15,7 @@ class MyPageViewController: UIViewController {
     
     let tableView = UITableView()
     let viewModel = MyPageViewModel()
+    let profileViewModel = MyProfileViewModel.shared
     
 
     override func viewDidLoad() {
@@ -25,6 +26,19 @@ class MyPageViewController: UIViewController {
         makeConstraints()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        DispatchQueue.main.async {
+            self.profileViewModel.getSignIn { code, error, user in
+                if code == 200 {
+                    if let user = user {
+                        self.profileViewModel.myUserInfo.value = user
+                    }
+                }
+                
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +69,10 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyPageDetailCell", for: indexPath) as? MyPageDetailCell else { return UITableViewCell() }
-            cell.nameLabel.text = "쿵짝짝"
+            
+            profileViewModel.myUserInfo.bind { user in
+                cell.nameLabel.text = "\(user.nick)"
+            }
             
             return cell
             

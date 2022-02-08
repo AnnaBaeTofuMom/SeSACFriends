@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CodeAuthViewController: UIViewController {
     
@@ -32,19 +33,44 @@ class CodeAuthViewController: UIViewController {
     
     @objc func verifyCodeNumber() {
         
-        
-        
-        repo.requestCodeAuth(code: codeView.phoneNumberTextField.textField.text) { error, statusCode in
-
-            if error == nil {
-                print("----ViewModel----this code is verified")
-                let nvc = NicknameViewController()
-                nvc.viewModel.phoneNumber = self.viewModel.phoneNumber
-                self.navigationController?.pushViewController(nvc, animated: true)
-            } else {
-                print("----ViewModel----this code is not verified")
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if error != nil {
+            // Handle error
+            return;
+          }
+            print("this is idToken = \(String(describing: idToken))")
+            UserDefaults.standard.set(idToken, forKey: "idToken")
+          // Send token to your backend via HTTPS
+          // ...
+            self.repo.requestCodeAuth(code: self.codeView.phoneNumberTextField.textField.text) { error, authresult in
+                
+                if let authresult = authresult {
+                    
+                    self.repo.getSignIn { code, error, user in
+                        if code == 200 {
+                            
+                            
+                            MyProfileViewModel.shared.userInfo = user
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                            windowScene.windows.first?.rootViewController = TabBarViewController()
+                            windowScene.windows.first?.makeKeyAndVisible()
+                            
+                        } else {
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                            windowScene.windows.first?.rootViewController = NicknameViewController()
+                            windowScene.windows.first?.makeKeyAndVisible()
+                        }
+                    }
+                   
+                }
+                
+                
+                
             }
         }
+        
+       
     }
 
 }

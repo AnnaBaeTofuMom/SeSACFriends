@@ -6,23 +6,126 @@
 //
 
 import UIKit
+import RxSwift
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let repo = Repository()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
         
-        let nav = TabBarViewController()
+        if UserDefaults.standard.string(forKey: "idToken") == nil {
+            
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            window = UIWindow(windowScene: windowScene)
+            
+            let nav = OnboardingViewController()
 
-        window?.rootViewController = nav
-        window?.makeKeyAndVisible()
+            window?.rootViewController = nav
+            window?.makeKeyAndVisible()
+            
+            guard let _ = (scene as? UIWindowScene) else { return }
+            
+        } else {
+            
+            repo.getSignIn { code, error, user in
+                guard let code = code else {
+                    
+                    return
+                }
+                
+                switch code {
+                    
+                case 200:
+                    
+                    guard let windowScene = (scene as? UIWindowScene) else { return }
+                    self.window = UIWindow(windowScene: windowScene)
+                    
+                    let vc = TabBarViewController()
+                    
+
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
+                    
+                    guard let _ = (scene as? UIWindowScene) else { return }
+                    
+                case 406:
+                    
+                    guard let windowScene = (scene as? UIWindowScene) else { return }
+                    self.window = UIWindow(windowScene: windowScene)
+                    
+                    let vc = UINavigationController(rootViewController: PhoneAuthViewController())
+
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
+                    
+                    guard let _ = (scene as? UIWindowScene) else { return }
+                    
+                
+                case 401:
+                    UserDefaults.standard.set(Auth.auth().currentUser?.refreshToken, forKey: "idToken")
+                    self.repo.getSignIn { code, error, user in
+                        guard let code = code else {
+                            return
+                        }
+                        switch code {
+                        case 200:
+                            
+                            guard let windowScene = (scene as? UIWindowScene) else { return }
+                            self.window = UIWindow(windowScene: windowScene)
+                            
+                            let vc = TabBarViewController()
+
+                            self.window?.rootViewController = vc
+                            self.window?.makeKeyAndVisible()
+                            
+                            guard let _ = (scene as? UIWindowScene) else { return }
+                            
+                        case 406:
+                            
+                            guard let windowScene = (scene as? UIWindowScene) else { return }
+                            self.window = UIWindow(windowScene: windowScene)
+                            
+                            let vc = UINavigationController(rootViewController: PhoneAuthViewController())
+
+                            self.window?.rootViewController = vc
+                            self.window?.makeKeyAndVisible()
+                            
+                            guard let _ = (scene as? UIWindowScene) else { return }
+                            
+                        default:
+                            guard let windowScene = (scene as? UIWindowScene) else { return }
+                            self.window = UIWindow(windowScene: windowScene)
+                            
+                            let vc = OnboardingViewController()
+
+                            self.window?.rootViewController = vc
+                            self.window?.makeKeyAndVisible()
+                            
+                            guard let _ = (scene as? UIWindowScene) else { return }
+                        }
+                    }
+                    
+                    
+                default:
+                    guard let windowScene = (scene as? UIWindowScene) else { return }
+                    self.window = UIWindow(windowScene: windowScene)
+                    
+                    let vc = OnboardingViewController()
+
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
+                    
+                    guard let _ = (scene as? UIWindowScene) else { return }
+                }
+            }
+            
+        }
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

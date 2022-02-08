@@ -2,18 +2,20 @@
 //  UserInfo.swift
 //  sesac1
 //
-//  Created by 경원이 on 2022/01/20.
+//  Created by 경원이 on 2022/02/08.
 //
 
 import Foundation
 
 class UserInfo {
+    
     static let shared = UserInfo()
-    var phoneNumber: String?
-    var isVerified: Bool?
-    var password: String?
-    var nickname: String?
-    var dateOfBirth: Date?
-    var email: String?
-    var genderIsMale: Bool?
+    
+    var user: User?
+    
+    private init() {
+        
+    }
+    
+    
 }

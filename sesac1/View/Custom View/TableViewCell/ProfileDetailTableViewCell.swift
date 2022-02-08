@@ -8,11 +8,13 @@
 import UIKit
 import SnapKit
 import RangeSeekSlider
+import RxSwift
 
 class ProfileDetailTableViewCell: UITableViewCell {
 
    
     let identifier = "ProfileDetailTableViewCell"
+    let viewModel = MyProfileViewModel.shared
     let genderLabel = UILabel()
     let genderBox1 = UIView()
     let genderBox2 = UIView()
@@ -28,6 +30,7 @@ class ProfileDetailTableViewCell: UITableViewCell {
     
     let maleLabel = UILabel()
     let femaleLabel = UILabel()
+    let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: identifier)
@@ -71,13 +74,21 @@ class ProfileDetailTableViewCell: UITableViewCell {
         hobbyLabel.font = R.font.notoSansCJKkrRegular(size: 14)
         
         hobbyTextfield.font = R.font.notoSansCJKkrRegular(size: 14)
+        hobbyTextfield.rx.text.orEmpty.subscribe { text in
+        
+            self.viewModel.updateUserModel.value.hobby = "\(text.element!)"
+            print(text)
+            
+            
+        }.disposed(by: disposeBag)
+
         hobbyTextfieldLine.backgroundColor = R.color.gray3()
         
         numberSearchableLabel.text = "내 번호 검색 허용"
         numberSearchableLabel.font = R.font.notoSansCJKkrRegular(size: 14)
         counterAgeLabel.text = "상대방 연령대"
         counterAgeLabel.font = R.font.notoSansCJKkrRegular(size: 14)
-        ageRangeLabel.text = "18 - 35"
+        ageRangeLabel.text = "\(viewModel.myUserInfo.value.ageMin) - \(viewModel.myUserInfo.value.ageMax)"
         ageRangeLabel.textColor = R.color.green()
         ageRangeLabel.font = R.font.notoSansCJKkrRegular(size: 14)
         deleteAccountLabel.text = "회원탈퇴"
@@ -92,8 +103,10 @@ class ProfileDetailTableViewCell: UITableViewCell {
         ageSlider.tintColor = R.color.gray2()
         ageSlider.minValue = 18
         ageSlider.maxValue = 65
-        ageSlider.selectedMinValue = 18
-        ageSlider.selectedMaxValue = 35
+        ageSlider.selectedMinValue = CGFloat(viewModel.userInfo?.ageMin ?? 18)
+        ageSlider.selectedMaxValue = CGFloat(viewModel.userInfo?.ageMax ?? 65)
+        ageSlider.hideLabels = true
+        
         
         numberSearchableToggle.tintColor = R.color.green()
         
@@ -187,6 +200,8 @@ class ProfileDetailTableViewCell: UITableViewCell {
 }
 extension ProfileDetailTableViewCell: RangeSeekSliderDelegate {
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        viewModel.updateUserModel.value.ageMax = Int(maxValue.rounded(.up))
+        viewModel.updateUserModel.value.ageMin = Int(minValue.rounded(.up))
     
         self.ageRangeLabel.text = "\(Int(minValue.rounded(.up))) - \(Int(maxValue.rounded(.up)))"
     }

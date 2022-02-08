@@ -64,31 +64,31 @@ class signInViewModel {
         
     }
     
-    func SignIn(completion: @escaping (Int?, APIError?) -> Void ) {
+    func SignIn(completion: @escaping (Int?, APIError?, User?) -> Void ) {
         
-        repo.getSignIn { statusCode, error in
+        repo.getSignIn { statusCode, error, user  in
             guard let error = error else {
                 if statusCode == 200 {
-                    completion(200, nil)
+                    completion(200, nil, user)
                 }
                 if statusCode == 201 {
-                    completion(201, nil)
+                    completion(201, nil, nil)
                     print("미가입유저")
                 }
                 
                 if statusCode == 401 {
-                    completion(401, nil)
+                    completion(401, nil, nil)
                     print("firebase Token Error")
                     
                 }
                 
                 if statusCode == 500 {
-                    completion(500, nil)
+                    completion(500, nil, nil)
                     print("server Error")
                 }
                 
                 if statusCode == 501 {
-                    completion(501, nil)
+                    completion(501, nil, nil)
                     print("header, body 확인 요")
                 }
                 return

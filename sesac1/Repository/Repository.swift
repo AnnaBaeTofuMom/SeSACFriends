@@ -16,6 +16,7 @@ class Repository {
     let baseURL = "http://test.monocoding.com:35484"
     
     let urlUser = "/user"
+    let urlUserUpdate = "/user/update/mypage"
     
     
     func requestPhoneAuth(phoneNumber: String, completion: @ escaping (APIError?, StatusCode?) -> Void) {
@@ -39,7 +40,7 @@ class Repository {
         
     }
 
-    func requestCodeAuth(code: String?, completion: @escaping (APIError?, StatusCode?) -> Void ){
+    func requestCodeAuth(code: String?, completion: @escaping (APIError?, AuthDataResult?) -> Void ){
         print(#function)
         guard let verificationCode = code else { return }
         let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")!
@@ -52,7 +53,7 @@ class Repository {
             if error == nil {
                 print(authResult ?? "")
                 print("User Signed in")
-                completion(nil, .success)
+                completion(nil, authResult)
                 
             } else {
                 print(error.debugDescription)
@@ -89,41 +90,76 @@ class Repository {
         
     }
     
-    func getSignIn(completion: @escaping (Int?, APIError?) -> Void) {
+    func getSignIn(completion: @escaping (Int?, APIError?, User?) -> Void) {
         
         let headers = [
             "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
             "Content-Type": "application/x-www-form-urlencoded"
         ] as HTTPHeaders
         
-        AF.request(baseURL + urlUser, method: .get, headers: headers).validate().response { response in
-            if response.response?.statusCode == 200 {
-                completion(200, nil)
-                print("로그인 성공")
-            }
+        AF.request(baseURL + urlUser, method: .get, headers: headers).validate().responseJSON { response in
             
-            if response.response?.statusCode == 201 {
-                completion(201, nil)
-                print("미가입유저")
-            }
-            
-            if response.response?.statusCode == 401 {
-                completion(401, nil)
-                print("firebase Token Error")
+            switch response.result {
+            case .success(let value):
+                if let json = value as? NSDictionary {
+                    
+                    do {
+                        let dataJSON = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                        
+                        
+                        let getData = try JSONDecoder().decode(User.self, from: dataJSON)
+                        
+                        completion(response.response?.statusCode, nil, getData)
+                        print(getData)
+                        
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(response.response?.statusCode, .failed, nil)
+                    }
+                    
+                    
+                }
                 
-            }
-            
-            if response.response?.statusCode == 500 {
-                completion(500, nil)
-                print("server Error")
-            }
-            
-            if response.response?.statusCode == 501 {
-                completion(501, nil)
-                print("header, body 확인 요")
+            case .failure(let error):
+                print(error)
             }
             
         }
+        
+    }
+    
+    func postUserUpdate(UpdateUserModel: UpdateUserModel, completion: @escaping (Int?, APIError?) -> Void) {
+        
+        let headers = [
+            "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ] as HTTPHeaders
+        
+        let params = [
+            "searchable" : UpdateUserModel.searchable,
+            "ageMin" : UpdateUserModel.ageMin,
+            "ageMax" : UpdateUserModel.ageMax,
+            "gender" : UpdateUserModel.gender,
+            "hobby" : "\(UpdateUserModel.hobby!)"
+        ] as Parameters
+        
+        AF.request(baseURL + urlUserUpdate, method: .post, parameters: params, headers: headers).validate().responseString { response in
+            switch response.result {
+            case .success(let value):
+                print("this is update result - success")
+                print(value)
+                completion(response.response?.statusCode, nil)
+            case .failure(let error):
+                print("this is update result - failure")
+                print(error)
+                completion(nil, .failed)
+            }
+        }
+        
+        
+        
+        
+        
         
     }
     

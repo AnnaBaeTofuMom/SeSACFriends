@@ -9,7 +9,7 @@ import UIKit
 
 class NameCardCell: UITableViewCell {
 
-    let viewModel = MyProfileViewModel()
+    let viewModel = MyProfileViewModel.shared
     let identifier = "NameCardCell"
     let nameLabel = UILabel()
     let sesacTitleLabel = UILabel()
@@ -21,6 +21,7 @@ class NameCardCell: UITableViewCell {
            
            layout.scrollDirection = .vertical
            layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+    
           
            let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
            
@@ -108,7 +109,7 @@ class NameCardCell: UITableViewCell {
 }
 extension NameCardCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 156, height: 32)
+        return CGSize(width: (UIScreen.main.bounds.width - 78) / 2, height: 32)
     }
     
   
@@ -119,7 +120,7 @@ extension NameCardCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = titleCollection.dequeueReusableCell(withReuseIdentifier: "TitleCollectionViewCell", for: indexPath) as! TitleCollectionViewCell
         cell.titleLabel.text = viewModel.titleArray[indexPath.row]
-        cell.makeBackground(hasTitle: viewModel.titleBoolArray[indexPath.row])
+        cell.makeBackground(hasTitle: viewModel.userInfo?.reputation[indexPath.row] ?? 0)
                 
         return cell
     }

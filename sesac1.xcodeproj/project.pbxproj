@@ -33,13 +33,16 @@
 		3A428A62279840EA00BE0F7C /* notoSansCJKkrRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A428A5D27983EFF00BE0F7C /* notoSansCJKkrRegular.otf */; };
 		3A428A63279840EA00BE0F7C /* notoSansCJKkrRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A428A5D27983EFF00BE0F7C /* notoSansCJKkrRegular.otf */; };
 		3A428A672798476400BE0F7C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A662798476400BE0F7C /* RegisterView.swift */; };
-		3A428A6D2798747800BE0F7C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A6C2798747800BE0F7C /* UserInfo.swift */; };
+		3A428A6D2798747800BE0F7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A6C2798747800BE0F7C /* User.swift */; };
 		3A428A6F2798750100BE0F7C /* PhoneAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A6E2798750100BE0F7C /* PhoneAuthViewModel.swift */; };
 		3A428A7627989C1F00BE0F7C /* CodeAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A7527989C1F00BE0F7C /* CodeAuthView.swift */; };
 		3A428A7A27989D6E00BE0F7C /* CodeRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A428A7927989D6E00BE0F7C /* CodeRegisterView.swift */; };
 		3A7245282798157200B5EE37 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7245272798157200B5EE37 /* RxCocoa */; };
 		3A72452A2798157300B5EE37 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7245292798157200B5EE37 /* RxSwift */; };
 		3A72452D2798159F00B5EE37 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A72452C2798159F00B5EE37 /* SnapKit */; };
+		3A94D1A827B2387E00B0BD97 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1A727B2387E00B0BD97 /* UserInfo.swift */; };
+		3A94D1AA27B25E7600B0BD97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1A927B25E7600B0BD97 /* Observable.swift */; };
+		3A94D1AC27B299EF00B0BD97 /* UpdateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1AB27B299EF00B0BD97 /* UpdateUserModel.swift */; };
 		3AA75A332796ABF6007293B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA75A322796ABF6007293B5 /* AppDelegate.swift */; };
 		3AA75A352796ABF6007293B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA75A342796ABF6007293B5 /* SceneDelegate.swift */; };
 		3AA75A3C2796ABF7007293B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA75A3B2796ABF7007293B5 /* Assets.xcassets */; };
@@ -104,10 +107,13 @@
 		3A428A5B27983E9B00BE0F7C /* notoSansCJKkrMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notoSansCJKkrMedium.otf; sourceTree = "<group>"; };
 		3A428A5D27983EFF00BE0F7C /* notoSansCJKkrRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notoSansCJKkrRegular.otf; sourceTree = "<group>"; };
 		3A428A662798476400BE0F7C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		3A428A6C2798747800BE0F7C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		3A428A6C2798747800BE0F7C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3A428A6E2798750100BE0F7C /* PhoneAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewModel.swift; sourceTree = "<group>"; };
 		3A428A7527989C1F00BE0F7C /* CodeAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAuthView.swift; sourceTree = "<group>"; };
 		3A428A7927989D6E00BE0F7C /* CodeRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRegisterView.swift; sourceTree = "<group>"; };
+		3A94D1A727B2387E00B0BD97 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		3A94D1A927B25E7600B0BD97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3A94D1AB27B299EF00B0BD97 /* UpdateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserModel.swift; sourceTree = "<group>"; };
 		3AA75A2F2796ABF6007293B5 /* sesac1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sesac1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA75A322796ABF6007293B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA75A342796ABF6007293B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,9 +230,12 @@
 		3A428A6A27986E1500BE0F7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A428A6C2798747800BE0F7C /* UserInfo.swift */,
+				3A428A6C2798747800BE0F7C /* User.swift */,
+				3A94D1AB27B299EF00B0BD97 /* UpdateUserModel.swift */,
 				3A32EF7C279C4AEA00993FE3 /* AuthModel.swift */,
 				3AC44A8C279DD8A600F49065 /* OnboardingSlide.swift */,
+				3A94D1A727B2387E00B0BD97 /* UserInfo.swift */,
+				3A94D1A927B25E7600B0BD97 /* Observable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -623,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A94D1A827B2387E00B0BD97 /* UserInfo.swift in Sources */,
 				3AA75A692796AEBB007293B5 /* CodeAuthViewController.swift in Sources */,
 				3A2D0E1A279DA3B7002EFF0D /* GenderViewController.swift in Sources */,
 				3AAB4EE427AD3EC0003456D5 /* MyPageViewModel.swift in Sources */,
@@ -633,8 +643,10 @@
 				3A0D1EAB27B0000700AF3818 /* TitleCollectionViewCell.swift in Sources */,
 				3AC44A8B279DD5B800F49065 /* OnboardingViewController.swift in Sources */,
 				3A32EF81279C5F9100993FE3 /* Repository.swift in Sources */,
+				3A94D1AC27B299EF00B0BD97 /* UpdateUserModel.swift in Sources */,
 				3AAB4EE227AD3AE0003456D5 /* MyPageCell.swift in Sources */,
 				3A0D1EAF27B0197000AF3818 /* ProfileDetailTableViewCell.swift in Sources */,
+				3A94D1AA27B25E7600B0BD97 /* Observable.swift in Sources */,
 				3A2D0E12279D59E5002EFF0D /* SignInViewModel.swift in Sources */,
 				3A0D1EA727ADB67000AF3818 /* NameCardCell.swift in Sources */,
 				3A32EF7F279C5F3900993FE3 /* Entity.swift in Sources */,
@@ -656,7 +668,7 @@
 				3AA75A352796ABF6007293B5 /* SceneDelegate.swift in Sources */,
 				3AA75A672796AEA9007293B5 /* PhoneAuthViewController.swift in Sources */,
 				3AAB4EDE27ABB38E003456D5 /* MyPageViewController.swift in Sources */,
-				3A428A6D2798747800BE0F7C /* UserInfo.swift in Sources */,
+				3A428A6D2798747800BE0F7C /* User.swift in Sources */,
 				3AAB4EDC27ABB37A003456D5 /* FriendViewController.swift in Sources */,
 				3A428A4C27981A4300BE0F7C /* R.generated.swift in Sources */,
 				3A428A6F2798750100BE0F7C /* PhoneAuthViewModel.swift in Sources */,

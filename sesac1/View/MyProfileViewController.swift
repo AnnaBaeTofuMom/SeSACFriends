@@ -10,15 +10,19 @@ import SnapKit
 
 class MyProfileViewController: UIViewController {
     
-    let viewModel = MyPageViewModel()
-    let tableView = UITableView()
+    let viewModel = MyProfileViewModel.shared
     
+    let tableView = UITableView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        
+        
+        
         configure()
         makeConstraints()
     }
@@ -38,6 +42,7 @@ class MyProfileViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         
+        
     }
     
     func makeConstraints() {
@@ -49,11 +54,24 @@ class MyProfileViewController: UIViewController {
         
     }
     
-
     @objc func saveButtonClicked() {
-        viewModel.saveButtonClicked()
+        
+        viewModel.postUpdateUser(UpdateUserModel: self.viewModel.updateUserModel.value) { statuscode, error in
+            switch statuscode {
+            case 200:
+                self.view.makeToast("저장되었습니다.")
+                
+            case .none:
+                self.view.makeToast("저장에 실패했습니다")
+            case .some(_):
+                self.view.makeToast("저장에 실패했습니다.")
+            }
+        }
         
     }
+    
+
+    
 }
 extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -74,9 +92,19 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NameCardCell") as? NameCardCell else { return UITableViewCell() }
             
+            cell.nameLabel.text = MyProfileViewModel.shared.myUserInfo.value.nick
+            
+            
+            
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileDetailTableViewCell") as? ProfileDetailTableViewCell else { return UITableViewCell() }
+            
+            cell.hobbyTextfield.text = viewModel.myUserInfo.value.hobby
+            cell.numberSearchableToggle.isOn = (((viewModel.myUserInfo.value.searchable)) != 0)
+            cell.ageSlider.selectedMaxValue = CGFloat(Int(viewModel.myUserInfo.value.ageMax))
+            cell.ageSlider.selectedMinValue = CGFloat(Int(viewModel.myUserInfo.value.ageMin))
+
             return cell
         }
         

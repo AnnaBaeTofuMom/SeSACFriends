@@ -17,7 +17,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
           super.init(coder: coder)
           configure()
-        makeConstraints()
+          makeConstraints()
       }
       
       override init(frame: CGRect) {
@@ -58,7 +58,6 @@ class TitleCollectionViewCell: UICollectionViewCell {
     func makeConstraints() {
         
         self.snp.makeConstraints { make in
-            make.width.equalTo(151)
             make.height.equalTo(32)
         }
         

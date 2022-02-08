@@ -54,11 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-          if let error = error {
+            if error != nil {
             // Handle error
             return;
           }
-            print("this is idToken = \(idToken)")
+            print("this is idToken = \(String(describing: idToken))")
             UserDefaults.standard.set(idToken, forKey: "idToken")
           // Send token to your backend via HTTPS
           // ...

@@ -75,8 +75,9 @@ class GenderViewController: UIViewController, UIGestureRecognizerDelegate {
             case 201:
                 self.view.makeToast("이미 가입한 유저입니다.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.viewModel.SignIn { statuscode, error in
+                    self.viewModel.SignIn { statuscode, error, user in
                         if statuscode == 200 {
+                            MyProfileViewModel.shared.userInfo = user
                             self.view.window?.rootViewController = TabBarViewController()
                         } else {
                             self.view.makeToast("로그인에 실패했습니다...")
