@@ -8,6 +8,11 @@
 import UIKit
 
 class MainMapViewController: UIViewController {
+    
+    override func loadView() {
+        super.loadView()
+        view = MainMapCustomView()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,21 +20,9 @@ class MainMapViewController: UIViewController {
         view.backgroundColor = .blue
         self.tabBarController?.editButtonItem.tintColor = R.color.whitegreen()
         
+    
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

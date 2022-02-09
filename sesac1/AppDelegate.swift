@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UINavigationBar.appearance().tintColor = R.color.black()
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for:UIBarMetrics.default)
         
+        UITabBar.appearance().backgroundColor = R.color.white()
+        UITabBar.appearance().isTranslucent = false
+        
 //        navigationController?.navigationBar.topItem?.backButtonTitle = ""
         
         

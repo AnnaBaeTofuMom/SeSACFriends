@@ -471,14 +471,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 19 images.
+  /// This `R.image` struct is generated, and contains static references to 22 images.
   struct image {
     /// Image `arrow`.
     static let arrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow")
+    /// Image `before_search_btn`.
+    static let before_search_btn = Rswift.ImageResource(bundle: R.hostingBundle, name: "before_search_btn")
+    /// Image `centerAnnotation`.
+    static let centerAnnotation = Rswift.ImageResource(bundle: R.hostingBundle, name: "centerAnnotation")
     /// Image `faq`.
     static let faq = Rswift.ImageResource(bundle: R.hostingBundle, name: "faq")
     /// Image `friend`.
     static let friend = Rswift.ImageResource(bundle: R.hostingBundle, name: "friend")
+    /// Image `gps_btn`.
+    static let gps_btn = Rswift.ImageResource(bundle: R.hostingBundle, name: "gps_btn")
     /// Image `home`.
     static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "home")
     /// Image `man`.
@@ -520,6 +526,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "before_search_btn", bundle: ..., traitCollection: ...)`
+    static func before_search_btn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.before_search_btn, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "centerAnnotation", bundle: ..., traitCollection: ...)`
+    static func centerAnnotation(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.centerAnnotation, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "faq", bundle: ..., traitCollection: ...)`
     static func faq(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.faq, compatibleWith: traitCollection)
@@ -530,6 +550,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "friend", bundle: ..., traitCollection: ...)`
     static func friend(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.friend, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gps_btn", bundle: ..., traitCollection: ...)`
+    static func gps_btn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gps_btn, compatibleWith: traitCollection)
     }
     #endif
 
