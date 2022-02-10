@@ -17,6 +17,7 @@ class Repository {
     
     let urlUser = "/user"
     let urlUserUpdate = "/user/update/mypage"
+    let urlQueue = "/queue/onqueue"
     
     
     func requestPhoneAuth(phoneNumber: String, completion: @ escaping (APIError?, StatusCode?) -> Void) {
@@ -160,6 +161,35 @@ class Repository {
         
         
         
+        
+    }
+    
+    func postQueue(genderType: Int, region: Int, long: Double, lat: Double, hobbyArray: [String], completion: @escaping (Int?, APIError?, NearSeSAC?) -> Void) {
+        
+        let headers = [
+            "idtoken": "\(UserDefaults.standard.string(forKey: "idToken") ?? "none")",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ] as HTTPHeaders
+        
+        let params  = [
+             "region": region,
+             "long": long,
+             "lat": lat
+        ] as Parameters
+        
+        AF.request(baseURL + urlQueue, method: .post, parameters: params, headers: headers).responseDecodable(of: NearSeSAC.self ) { response in
+            
+            if response.response?.statusCode == 200 {
+                
+                completion(200, nil, response.value)
+            }
+            
+            
+            
+            
+        }
+        
+
         
     }
     

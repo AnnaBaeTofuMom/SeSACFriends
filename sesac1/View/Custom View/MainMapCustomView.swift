@@ -24,11 +24,14 @@ class MainMapCustomView: UIView {
     let floatingButton = UIButton()
     let centerAnnotation = UIImageView()
     let disposeBag = DisposeBag()
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         makeConstraints()
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +39,7 @@ class MainMapCustomView: UIView {
     }
     
     func configure() {
+        
         let locationManager = CLLocationManager()
         
         [mapView, stackShadowView, gpsButton, floatingButton, centerAnnotation].forEach {
@@ -49,7 +53,7 @@ class MainMapCustomView: UIView {
             $0.addTarget(self, action: #selector(onSearchGenderButtonClicked(sender:)), for: .touchUpInside)
         }
         
-        mapView.delegate = self
+        
         mapView.userTrackingMode = .follow
         mapView.setRegion(MKCoordinateRegion(center: locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 37.51793850084744,  longitude: 126.88631223877245), span: MKCoordinateSpan(latitudeDelta: 0.006, longitudeDelta: 0.006)), animated: true)
         
@@ -74,6 +78,7 @@ class MainMapCustomView: UIView {
         maleButton.setBackgroundColor(R.color.white()!, for: .normal)
         maleButton.setBackgroundColor(R.color.green()!, for: .selected)
         maleButton.titleLabel!.font = R.font.notoSansCJKkrRegular(size: 14)
+        maleButton.tag = 0
         
         femaleButton.setTitle("여자", for: .normal)
         femaleButton.setTitleColor(R.color.black(), for: .normal)
@@ -81,6 +86,7 @@ class MainMapCustomView: UIView {
         femaleButton.setBackgroundColor(R.color.white()!, for: .normal)
         femaleButton.setBackgroundColor(R.color.green()!, for: .selected)
         femaleButton.titleLabel!.font = R.font.notoSansCJKkrRegular(size: 14)
+        femaleButton.tag = 1
         
         floatingButton.setImage(UIImage(named: "before_search_btn"), for: .normal)
         
@@ -90,6 +96,7 @@ class MainMapCustomView: UIView {
         allButton.setBackgroundColor(R.color.white()!, for: .normal)
         allButton.setBackgroundColor(R.color.green()!, for: .selected)
         allButton.titleLabel!.font = R.font.notoSansCJKkrRegular(size: 14)
+        allButton.tag = 2
         
         gpsButton.setImage(UIImage(named: "gps_btn"), for: .normal)
         
@@ -146,6 +153,3 @@ class MainMapCustomView: UIView {
     
 }
 
-extension MainMapCustomView: MKMapViewDelegate {
-    
-}

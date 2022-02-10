@@ -471,7 +471,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 22 images.
+  /// This `R.image` struct is generated, and contains static references to 27 images.
   struct image {
     /// Image `arrow`.
     static let arrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow")
@@ -509,6 +509,16 @@ struct R: Rswift.Validatable {
     static let profile_img = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_img")
     /// Image `qna`.
     static let qna = Rswift.ImageResource(bundle: R.hostingBundle, name: "qna")
+    /// Image `sesac_face_1`.
+    static let sesac_face_1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesac_face_1")
+    /// Image `sesac_face_2`.
+    static let sesac_face_2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesac_face_2")
+    /// Image `sesac_face_3`.
+    static let sesac_face_3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesac_face_3")
+    /// Image `sesac_face_4`.
+    static let sesac_face_4 = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesac_face_4")
+    /// Image `sesac_face_5`.
+    static let sesac_face_5 = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesac_face_5")
     /// Image `setting_alarm`.
     static let setting_alarm = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_alarm")
     /// Image `shop`.
@@ -641,6 +651,41 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "qna", bundle: ..., traitCollection: ...)`
     static func qna(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.qna, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sesac_face_1", bundle: ..., traitCollection: ...)`
+    static func sesac_face_1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sesac_face_1, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sesac_face_2", bundle: ..., traitCollection: ...)`
+    static func sesac_face_2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sesac_face_2, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sesac_face_3", bundle: ..., traitCollection: ...)`
+    static func sesac_face_3(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sesac_face_3, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sesac_face_4", bundle: ..., traitCollection: ...)`
+    static func sesac_face_4(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sesac_face_4, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sesac_face_5", bundle: ..., traitCollection: ...)`
+    static func sesac_face_5(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sesac_face_5, compatibleWith: traitCollection)
     }
     #endif
 
