@@ -24,6 +24,7 @@ class MainMapCustomView: UIView {
     let floatingButton = UIButton()
     let centerAnnotation = UIImageView()
     let disposeBag = DisposeBag()
+    let viewModel = MainMapViewModel()
  
     
     override init(frame: CGRect) {
@@ -147,6 +148,15 @@ class MainMapCustomView: UIView {
             maleButton.isSelected = false
             
             sender.isSelected = true
+     
+        
+        self.viewModel.removeAnnotations(mapView: self.mapView) {
+            
+        }
+        self.viewModel.addAnnotation(gender: sender.tag, mapView: self.mapView) {
+           
+        }
+        
           
         }
     
