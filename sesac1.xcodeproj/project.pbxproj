@@ -43,6 +43,8 @@
 		3A72452D2798159F00B5EE37 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A72452C2798159F00B5EE37 /* SnapKit */; };
 		3A7B290627B515AE00B3A966 /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B290527B515AE00B3A966 /* MainMapViewModel.swift */; };
 		3A7B290827B51AA700B3A966 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B290727B51AA700B3A966 /* CustomAnnotationView.swift */; };
+		3A811E9B27B5782D0081E0EB /* SearchSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A811E9A27B5782D0081E0EB /* SearchSesacViewController.swift */; };
+		3A811E9D27B587D60081E0EB /* HobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A811E9C27B587D60081E0EB /* HobbyCollectionViewCell.swift */; };
 		3A94D1A827B2387E00B0BD97 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1A727B2387E00B0BD97 /* UserInfo.swift */; };
 		3A94D1AA27B25E7600B0BD97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1A927B25E7600B0BD97 /* Observable.swift */; };
 		3A94D1AC27B299EF00B0BD97 /* UpdateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94D1AB27B299EF00B0BD97 /* UpdateUserModel.swift */; };
@@ -117,6 +119,8 @@
 		3A6F277B27B3B41C0076B612 /* MainMapCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCustomView.swift; sourceTree = "<group>"; };
 		3A7B290527B515AE00B3A966 /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
 		3A7B290727B51AA700B3A966 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		3A811E9A27B5782D0081E0EB /* SearchSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSesacViewController.swift; sourceTree = "<group>"; };
+		3A811E9C27B587D60081E0EB /* HobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A94D1A727B2387E00B0BD97 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3A94D1A927B25E7600B0BD97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3A94D1AB27B299EF00B0BD97 /* UpdateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserModel.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				3A0D1EA627ADB67000AF3818 /* NameCardCell.swift */,
 				3A0D1EAA27B0000700AF3818 /* TitleCollectionViewCell.swift */,
 				3A0D1EAE27B0197000AF3818 /* ProfileDetailTableViewCell.swift */,
+				3A811E9C27B587D60081E0EB /* HobbyCollectionViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 		3A428A5927983B8D00BE0F7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3A811E9A27B5782D0081E0EB /* SearchSesacViewController.swift */,
 				3A2D0E1D279DAE5B002EFF0D /* MainMapViewController.swift */,
 				3AAB4ED927ABB359003456D5 /* ShopViewController.swift */,
 				3AAB4EDB27ABB37A003456D5 /* FriendViewController.swift */,
@@ -641,6 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A811E9D27B587D60081E0EB /* HobbyCollectionViewCell.swift in Sources */,
 				3A94D1A827B2387E00B0BD97 /* UserInfo.swift in Sources */,
 				3AA75A692796AEBB007293B5 /* CodeAuthViewController.swift in Sources */,
 				3A2D0E1A279DA3B7002EFF0D /* GenderViewController.swift in Sources */,
@@ -675,6 +682,7 @@
 				3A428A7627989C1F00BE0F7C /* CodeAuthView.swift in Sources */,
 				3A2D0E16279D8698002EFF0D /* DatePickerView.swift in Sources */,
 				3A2D0E1C279DA486002EFF0D /* GenderPickerView.swift in Sources */,
+				3A811E9B27B5782D0081E0EB /* SearchSesacViewController.swift in Sources */,
 				3AAB4EE027AD2D12003456D5 /* MyPageDetailCell.swift in Sources */,
 				3A2D0E18279D95C9002EFF0D /* EmailViewController.swift in Sources */,
 				3AA75A352796ABF6007293B5 /* SceneDelegate.swift in Sources */,

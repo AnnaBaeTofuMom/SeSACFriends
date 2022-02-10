@@ -24,7 +24,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.unselectedItemTintColor = R.color.gray6()
         
         
-        let tabOne = MainMapViewController()
+        let tabOne = UINavigationController(rootViewController: MainMapViewController())
+        
         let tabOneBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), tag: 0)
         
         tabOne.tabBarItem = tabOneBarItem

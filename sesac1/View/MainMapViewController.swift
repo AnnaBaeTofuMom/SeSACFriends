@@ -16,6 +16,7 @@ class MainMapViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = customView
+        customView.floatingButton.addTarget(self, action: #selector(pushNav), for: .touchUpInside)
         
         DispatchQueue.main.async {
             self.customView.viewModel.requestQueue { statuscode, error, sesacs in
@@ -41,6 +42,16 @@ class MainMapViewController: UIViewController {
         customView.mapView.delegate = self
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+     
+    }
+    
+    @objc func pushNav() {
+        let svc = SearchSesacViewController()
+        svc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(svc, animated: true)
     }
     
     
