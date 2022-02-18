@@ -43,6 +43,8 @@ class MainMapCustomView: UIView {
         
         let locationManager = CLLocationManager()
         
+        
+        
         [mapView, stackShadowView, gpsButton, floatingButton, centerAnnotation].forEach {
             self.addSubview($0)
         }
@@ -148,6 +150,7 @@ class MainMapCustomView: UIView {
             maleButton.isSelected = false
             
             sender.isSelected = true
+            print(sender.tag)
      
         
         self.viewModel.removeAnnotations(mapView: self.mapView) {

@@ -43,6 +43,8 @@ class MainMapViewModel {
                     default:
                         print("this sesac has no gender")
                     }
+                    
+                    print(allSesacArray.value)
                 }
             } else {
                 completion(statuscode, .failed, nil)

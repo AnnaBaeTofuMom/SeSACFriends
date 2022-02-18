@@ -10,7 +10,7 @@ struct User: Codable {
     let v: Int
     let uid, phoneNumber, email, fcMtoken: String
     let nick, birth: String
-    let gender: Int
+    var gender: Int
     let hobby: String
     let comment: [String]
     let reputation: [Int]
@@ -24,6 +24,16 @@ struct User: Codable {
     let dodgepenalty, dodgeNum, ageMin, ageMax: Int
     let searchable: Int
     let createdAt: String
+    
+    enum CodingKeys: String, CodingKey {
+            case id = "_id"
+            case v = "__v"
+            case uid, phoneNumber, email
+            case fcMtoken = "FCMtoken"
+            case nick, birth, gender, hobby, comment, reputation, sesac, sesacCollection, background, backgroundCollection, purchaseToken
+            case transactionID = "transactionId"
+            case reviewedBefore, reportedNum, reportedUser, dodgepenalty, dodgeNum, ageMin, ageMax, searchable, createdAt
+        }
 
 }
 

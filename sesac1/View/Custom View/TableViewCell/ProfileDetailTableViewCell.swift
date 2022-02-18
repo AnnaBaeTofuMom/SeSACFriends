@@ -16,8 +16,8 @@ class ProfileDetailTableViewCell: UITableViewCell {
     let identifier = "ProfileDetailTableViewCell"
     let viewModel = MyProfileViewModel.shared
     let genderLabel = UILabel()
-    let genderBox1 = UIView()
-    let genderBox2 = UIView()
+    let genderBox1 = UIButton()
+    let genderBox2 = UIButton()
     let hobbyLabel = UILabel()
     let hobbyTextfield = UITextField()
     let hobbyTextfieldLine = UIView()
@@ -59,14 +59,34 @@ class ProfileDetailTableViewCell: UITableViewCell {
         contentView.addSubview(ageSlider)
         contentView.addSubview(deleteAccountLabel)
         
+        
         genderBox1.addSubview(maleLabel)
         genderBox1.layer.borderWidth = 1
         genderBox1.layer.borderColor = R.color.gray2()?.cgColor
         genderBox1.layer.cornerRadius = 8
+        genderBox1.tag = 1
+        genderBox1.setBackgroundColor(R.color.white()!, for: .normal)
+        genderBox1.setBackgroundColor(R.color.green()!, for: .selected)
+        genderBox1.clipsToBounds = true
+        
         genderBox2.addSubview(femaleLabel)
         genderBox2.layer.borderWidth = 1
         genderBox2.layer.borderColor = R.color.gray2()?.cgColor
         genderBox2.layer.cornerRadius = 8
+        genderBox2.tag = 0
+        genderBox2.setBackgroundColor(R.color.white()!, for: .normal)
+        genderBox2.setBackgroundColor(R.color.green()!, for: .selected)
+        genderBox2.clipsToBounds = true
+        
+        [genderBox1, genderBox2].forEach {
+            $0.addTarget(self, action: #selector(tapGenderBox(sender:)), for: .touchUpInside)
+        }
+        
+        if MyProfileViewModel.shared.myUserInfo.value.gender == 0 {
+            genderBox2.isSelected = true
+        } else if MyProfileViewModel.shared.myUserInfo.value.gender == 1 {
+            genderBox1.isSelected = true
+        }
         
         genderLabel.text = "내 성별"
         genderLabel.font = R.font.notoSansCJKkrRegular(size: 14)
@@ -74,6 +94,7 @@ class ProfileDetailTableViewCell: UITableViewCell {
         hobbyLabel.font = R.font.notoSansCJKkrRegular(size: 14)
         
         hobbyTextfield.font = R.font.notoSansCJKkrRegular(size: 14)
+        hobbyTextfield.text = self.viewModel.myUserInfo.value.hobby
         hobbyTextfield.rx.text.orEmpty.subscribe { text in
         
             self.viewModel.updateUserModel.value.hobby = "\(text.element!)"
@@ -109,8 +130,26 @@ class ProfileDetailTableViewCell: UITableViewCell {
         
         
         numberSearchableToggle.tintColor = R.color.green()
+        numberSearchableToggle.rx.isOn.asObservable().bind { bool in
+            if bool == true {
+                self.viewModel.updateUserModel.value.searchable = 1
+            } else {
+                self.viewModel.updateUserModel.value.searchable = 0
+            }
+            
+        }
         
         
+    }
+    
+    @objc func tapGenderBox(sender: UIButton) {
+        print(sender)
+        [genderBox1, genderBox2].forEach {
+            $0.isSelected = false
+        }
+        sender.isSelected = true
+       
+        MyProfileViewModel.shared.updateUserModel.value.gender = sender.tag
     }
     
     func makeConstraints() {

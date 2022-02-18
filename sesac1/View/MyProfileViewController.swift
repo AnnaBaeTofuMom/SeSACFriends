@@ -21,10 +21,29 @@ class MyProfileViewController: UIViewController {
         tableView.dataSource = self
         
         
-        
-        
         configure()
         makeConstraints()
+       
+        viewModel.getSignIn { statuscode, error, user in
+            guard let user = user else { return }
+            self.viewModel.myUserInfo.value = user
+            
+        }
+        
+    
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getSignIn { statuscode, error, user in
+            guard let user = user else { return }
+            self.viewModel.myUserInfo.value = user
+            
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     
@@ -104,6 +123,7 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.numberSearchableToggle.isOn = (((viewModel.myUserInfo.value.searchable)) != 0)
             cell.ageSlider.selectedMaxValue = CGFloat(Int(viewModel.myUserInfo.value.ageMax))
             cell.ageSlider.selectedMinValue = CGFloat(Int(viewModel.myUserInfo.value.ageMin))
+            
 
             return cell
         }

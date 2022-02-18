@@ -11,7 +11,7 @@ class MyProfileViewModel {
     static let shared = MyProfileViewModel()
     
     var myUserInfo: Observable<User> = Observable(User(id: "", v: 0, uid: "", phoneNumber: "", email: "", fcMtoken: "",nick:"쿵짝짝", birth: "", gender: 0, hobby: "abc", comment: [], reputation: [], sesac: 0, sesacCollection: [], background: 0, backgroundCollection: [], purchaseToken: [],transactionID: [],reviewedBefore: [], reportedNum: 0, reportedUser: [], dodgepenalty: 0, dodgeNum: 0, ageMin: 0,ageMax: 0,searchable: 1, createdAt: ""))
-    var updateUserModel: Observable<UpdateUserModel> = Observable(UpdateUserModel(searchable: 0, ageMin: 18, ageMax: 65, gender: -1, hobby: ""))
+    var updateUserModel: Observable<UpdateUserModel> = Observable(UpdateUserModel(searchable: 0, ageMin: 18, ageMax: 65, gender: 0, hobby: ""))
     let repo = Repository()
     var userInfo: User?
     let titleArray = ["좋은 매너", "정확한 시간 약속", "빠른 응답", "친절한 성격", "능숙한 취미 실력", "유익한 시간"]

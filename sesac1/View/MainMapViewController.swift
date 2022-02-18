@@ -40,6 +40,7 @@ class MainMapViewController: UIViewController {
         self.tabBarController?.editButtonItem.tintColor = R.color.whitegreen()
         
         customView.mapView.delegate = self
+        self.navigationController?.navigationBar.isHidden = true
         
         
     }
